@@ -1,9 +1,10 @@
 import React from "react";
 import { FaRegEye, FaShareAlt } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { total_view, author, thumbnail_url, details, tags, others } = news;
+  const { id, total_view, author, thumbnail_url, details, tags, others } = news;
 
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-gray-200 rounded-2xl overflow-hidden">
@@ -76,9 +77,12 @@ const NewsCard = ({ news }) => {
           <FaRegEye className="text-gray-500" />
           <span>{total_view.toLocaleString()} views</span>
         </div>
-        <button className="btn btn-sm btn-outline btn-primary rounded-full px-4">
+        <Link
+          to={`/news-details/${id}`}
+          className="btn btn-sm btn-outline btn-primary rounded-full px-4"
+        >
           Read More
-        </button>
+        </Link>
       </div>
     </div>
   );
